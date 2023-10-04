@@ -1,4 +1,4 @@
-const api = `https://raw.githubusercontent.com/NatShulga/Product-shop.json/main/Product%20shop.json`;
+const api = `https://raw.githubusercontent.com/NatShulga/Product-shop.json/main/Product-shop.json`;
 
 const stations = [];
 
@@ -31,14 +31,12 @@ function displayOptions() {
   const html = options
     .map((station) => {
       const regex = new RegExp(this.value, "gi");
-      const ProductnName = station.name.replace(
-        regex,
-        ` <innerText class="h1">${this.value}</innerText>`
-      );
+      const ProductnName = station.name
+        .replace(regex, `<span class="text1">${this.value}</span>`)
+        .trim(); // Используйте trim() здесь, чтобы удалить лишние пробелы.
 
       return `<li>${ProductnName}</li>`;
     })
-    .slice(0, 10)
     .join("");
 
   searchOptions.innerHTML = this.value ? html : null;
